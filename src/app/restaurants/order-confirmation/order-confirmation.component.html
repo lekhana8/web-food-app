@@ -1,0 +1,21 @@
+<div class="order-confirmation">
+  <h2>Thank you for your order!</h2>
+  <p>Total Amount Paid: ₹{{ total.toFixed(2) }}</p>
+
+  <div class="ordered-items">
+    <h3>Your Ordered Food:</h3>
+    <ul>
+      <li *ngFor="let item of cartItems">
+        <strong>{{ item.name }}</strong> - ₹{{ item.price.toFixed(2) }} x {{ item.quantity }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="track-meal-card">
+    <h3>Track Your Meal</h3>
+    <p>Your delicious food is being prepared and will be delivered shortly. Stay tuned!</p>
+    <button routerLink="/track-order" class="track-button">Track Your Meal</button>
+  </div>
+
+  <button routerLink="">Go to Home</button>
+</div>

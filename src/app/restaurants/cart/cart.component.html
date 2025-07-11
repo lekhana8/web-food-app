@@ -1,0 +1,38 @@
+<div class="cart-container page-container">
+  <button (click)="goBack()" class="back-button">← Back</button>
+
+  <h2>Your Cart</h2>
+
+  <div *ngIf="cartItems.length === 0">
+    <p>Your cart is empty.</p>
+  </div>
+
+  <div *ngFor="let item of cartItems" class="cart-item">
+    <div class="item-info">
+      <h3>{{ item.name }}</h3>
+
+      <div class="quantity-controls">
+        <button (click)="decreaseQuantity(item)">−</button>
+        <span>{{ item.quantity }}</span>
+        <button (click)="increaseQuantity(item)">+</button>
+      </div>
+
+      <button (click)="removeItem(item.id)" class="remove-btn">Remove</button>
+    </div>
+
+    <img [src]="item.image" alt="{{ item.name }}" />
+  </div>
+
+ 
+    <div *ngIf="cartItems.length > 0" class="cart-summary">
+  <p><strong>Subtotal: ₹{{ subtotal.toFixed(2) }}</strong></p>
+  <p><strong>Tax (10%): ₹{{ taxAmount.toFixed(2) }}</strong></p>
+  <p><strong>Total: ₹{{ total.toFixed(2) }}</strong></p>
+  
+  <div class="summary-buttons">
+    <button (click)="clearCart()" class="clear-btn">Clear Cart</button>
+    <button routerLink="/orderconfirmation" [disabled]="cartItems.length === 0" class="place-order-btn">Place Order</button>
+  </div>
+</div>
+
+  </div>

@@ -1,0 +1,90 @@
+.order-confirmation {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff8f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h2 {
+    color: green;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ordered-items {
+    margin: 2rem 0;
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: white;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      font-weight: 600;
+      color: #333;
+    }
+  }
+
+  .track-meal-card {
+    margin-top: 2rem;
+    background: #fff4e5; /* light orange */
+    padding: 1.5rem;
+    border-radius: 10px;
+    color: green; /* darker orange */
+
+    h3 {
+      margin-bottom: 1rem;
+      color: green;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .track-button {
+      background: #f97316; /* orange */
+      border: none;
+      padding: 0.6rem 1.2rem;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background: #c75a0f; /* darker orange */
+      }
+    }
+  }
+
+  /* Style for "Go to Home" button */
+  button[routerLink]:not(.track-button) {
+    margin-top: 2rem;
+    background: #fb923c; /* orange shade */
+    border: none;
+    padding: 0.7rem 1.5rem;
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background: #c76a17; /* darker orange */
+    }
+  }
+}

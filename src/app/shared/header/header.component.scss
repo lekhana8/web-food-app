@@ -1,0 +1,81 @@
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: beige;
+  gap: 1rem;
+
+  .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    color: brown;
+    font-style: oblique;
+    cursor: pointer;
+  }
+
+  .search-form {
+    flex-grow: 1;
+    margin: 0 1rem;
+    max-width: 400px;
+
+    .input-group {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    .account-link {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+
+      i {
+        font-size: 2rem;
+        margin-bottom: 0.25rem;
+      }
+
+      span {
+        font-size: 0.9rem;
+      }
+
+      &:hover {
+        color: #0d6efd;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+
+    .logo {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .search-form {
+      margin: 0 auto;
+      width: 100%;
+
+      .input-group {
+        width: 100%;
+        padding: 0 1rem;
+      }
+    }
+
+    .header-icons {
+      justify-content: center;
+    }
+  }
+}

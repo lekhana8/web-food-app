@@ -1,0 +1,35 @@
+<div *ngIf="restaurant" class="restaurant-card  page-container ">
+  <button routerLink="/restaurants" class="back-button">← Back</button>
+
+  <h2>{{ restaurant.name }}</h2>
+  <p>Cuisine: {{ restaurant.cuisine }}</p>
+  <p>Rating: {{ restaurant.rating }}</p>
+
+  <h3>Dishes</h3>
+
+  <div *ngFor="let dish of restaurant.dishes" class="dish-card card">
+    <img [src]="dish.image" alt="{{ dish.name }}" />
+    <div class="dish-info">
+      <h4>{{ dish.name }}</h4>
+      <p>{{ dish.description }}</p>
+      <p>Price: ${{ dish.price }}</p>
+
+      <!-- Add to Cart-->
+      <div *ngIf="!(cartQuantities[dish.id] > 0)">
+        <button (click)="addToCart(dish)">Add to Cart</button>
+      </div>
+
+      <!-- quantity  -->
+      <div *ngIf="cartQuantities[dish.id] > 0" class="cart-actions">
+        <button (click)="decreaseQuantity(dish)">−</button>
+        <span>{{ cartQuantities[dish.id] }}</span>
+        <button (click)="addToCart(dish)">+</button>
+      </div>
+    </div>
+    <!-- Floating Cart  -->
+    <button class="floating-cart-icon" (click)="goToCart()" aria-label="View Cart">
+      🛒
+    </button>
+
+  </div>
+</div>

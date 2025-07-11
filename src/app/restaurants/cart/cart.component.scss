@@ -1,0 +1,126 @@
+.cart-container {
+  margin: auto;
+  padding: 1rem;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .cart-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff5e6;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ffe0b3;
+
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      order: 2;
+    }
+
+    .item-info {
+      flex-grow: 1;
+      order: 1;
+
+      h3 {
+        margin: 0 0 0.5rem 0;
+      }
+
+      .quantity-controls {
+        display: flex;
+        align-items: center;
+        gap: 5px; /* gap between buttons and quantity text */
+        margin-top: 8px;
+
+        button {
+          background-color: #ff7043;
+          color: white;
+          border: none;
+          cursor: pointer;
+          transition: background-color 0.3s;
+
+          &:hover {
+            background-color: #e64a19;
+          }
+        }
+
+        span {
+          min-width: 24px;
+          text-align: center;
+          font-size: 16px;
+          font-weight: 500;
+          color: #333;
+        }
+      }
+
+      p {
+        margin: 0.2rem 0;
+      }
+
+      button.remove-btn {
+        margin-top: 0.5rem;
+        padding: 0.4rem 1rem;
+        border: none;
+        background-color: #d9534f;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #c9302c;
+        }
+      }
+    }
+  }
+
+  .cart-summary {
+    text-align: end;
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #fff5e6;
+    border-radius: 8px;
+    border: 1px solid #ffe0b3;
+
+    p {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .summary-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+
+      button {
+        padding: 0.5rem 1.5rem;
+        border: none;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .clear-btn {
+        background-color: #d9534f;
+        &:hover {
+          background-color: #c9302c;
+        }
+      }
+
+      .place-order-btn {
+        background-color: #0275d8;
+        &:hover {
+          background-color: #025aa5;
+        }
+      }
+    }
+  }
+}

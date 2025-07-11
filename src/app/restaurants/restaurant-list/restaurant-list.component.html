@@ -1,0 +1,32 @@
+<div class="page-container">
+  <button routerLink="" class="back-button">← Back</button>
+  <div class="filter-bar">
+    <label for="cuisine" class="filter-label">Filter by Cuisine:</label>
+    <select id="cuisine" [(ngModel)]="selectedCuisine" (change)="onFilterChange()" class="filter-select"
+      aria-label="Filter restaurants by cuisine">
+      <option *ngFor="let cuisine of cuisines" [value]="cuisine">
+        {{ cuisine }}
+      </option>
+    </select>
+  </div>
+
+  <div class="restaurant-list" role="list">
+    <div *ngFor="let restaurant of restaurants" class="restaurant-card" role="listitem">
+      <a [routerLink]="['/restaurant', restaurant.id]" class="details-link">
+      <img [src]="restaurant.image" alt="{{ restaurant.name }} image" class="restaurant-image" loading="lazy" />
+      <div class="restaurant-info">
+        <h3 class="restaurant-name">{{ restaurant.name }}</h3>
+        <p class="restaurant-cuisine">Cuisine: {{ restaurant.cuisine }}</p>
+        <p class="restaurant-rating">Rating: {{ restaurant.rating }} ⭐</p>
+        <a [routerLink]="['/restaurant', restaurant.id]" class="details-link"
+          [attr.aria-label]="'View details for ' + restaurant.name">
+          View Details →
+        </a>
+      </div>
+      </a>
+    </div>
+    
+  </div>
+
+  <div *ngIf="loading" class="loading">Loading...</div>
+</div>

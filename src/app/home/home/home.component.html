@@ -1,0 +1,19 @@
+<div class="home-container">
+  <section class="banner">
+    <h1>Welcome to TastyTrack!</h1>
+    <p>Discover your next favorite meal from the best local restaurants.</p>
+    <button (click)="goToRestaurants()">Browse Restaurants</button>
+  </section>
+
+  <section class="featured">
+    <h2>Featured Restaurants</h2>
+    <div class="restaurant-preview" *ngFor="let restaurant of featuredRestaurants">
+      <img [src]="restaurant.image" alt="{{ restaurant.name }}" />
+      <div>
+        <h3>{{ restaurant.name }}</h3>
+        <p>{{ restaurant.cuisine }} | Rating: {{ restaurant.rating }} ⭐</p>
+        <a [routerLink]="['/restaurant', restaurant.id]">View Details →</a>
+      </div>
+    </div>
+  </section>
+</div>
