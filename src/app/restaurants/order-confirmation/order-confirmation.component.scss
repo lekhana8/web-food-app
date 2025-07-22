@@ -1,5 +1,5 @@
 .order-confirmation {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 2rem auto;
   padding: 2rem;
   background: #fff8f0;
@@ -34,14 +34,17 @@
       font-weight: 600;
       color: #333;
     }
+
+
+
   }
 
   .track-meal-card {
     margin-top: 2rem;
-    background: #fff4e5; /* light orange */
+    background: #fff4e5;
     padding: 1.5rem;
     border-radius: 10px;
-    color: green; /* darker orange */
+    color: green;
 
     h3 {
       margin-bottom: 1rem;
@@ -54,7 +57,7 @@
     }
 
     .track-button {
-      background: #f97316; /* orange */
+      background: #f97316;
       border: none;
       padding: 0.6rem 1.2rem;
       color: white;
@@ -65,15 +68,14 @@
       transition: background-color 0.3s ease;
 
       &:hover {
-        background: #c75a0f; /* darker orange */
+        background: #c75a0f;
       }
     }
   }
 
-  /* Style for "Go to Home" button */
   button[routerLink]:not(.track-button) {
     margin-top: 2rem;
-    background: #fb923c; /* orange shade */
+    background: #fb923c;
     border: none;
     padding: 0.7rem 1.5rem;
     color: white;
@@ -84,7 +86,7 @@
     transition: background-color 0.3s ease;
 
     &:hover {
-      background: #c76a17; /* darker orange */
+      background: #c76a17;
     }
   }
 }

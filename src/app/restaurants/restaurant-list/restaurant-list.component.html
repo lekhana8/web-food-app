@@ -1,32 +1,30 @@
-<div class="page-container">
-  <button routerLink="" class="back-button">← Back</button>
-  <div class="filter-bar">
+<div class="page-container" role="main" aria-label="Restaurant Listings">
+  <button routerLink="" class="back-button" aria-label="Go back to previous page">← Back</button>
+
+  <div class="filter-bar" aria-label="Filter restaurants">
     <label for="cuisine" class="filter-label">Filter by Cuisine:</label>
     <select id="cuisine" [(ngModel)]="selectedCuisine" (change)="onFilterChange()" class="filter-select"
-      aria-label="Filter restaurants by cuisine">
+      aria-required="true" aria-describedby="cuisine-desc">
       <option *ngFor="let cuisine of cuisines" [value]="cuisine">
         {{ cuisine }}
       </option>
     </select>
+    <p id="cuisine-desc" class="visually-hidden">Select a cuisine to filter the restaurant list.</p>
   </div>
 
-  <div class="restaurant-list" role="list">
+  <div class="restaurant-list" role="list" aria-label="List of restaurants">
     <div *ngFor="let restaurant of restaurants" class="restaurant-card" role="listitem">
-      <a [routerLink]="['/restaurant', restaurant.id]" class="details-link">
-      <img [src]="restaurant.image" alt="{{ restaurant.name }} image" class="restaurant-image" loading="lazy" />
-      <div class="restaurant-info">
-        <h3 class="restaurant-name">{{ restaurant.name }}</h3>
-        <p class="restaurant-cuisine">Cuisine: {{ restaurant.cuisine }}</p>
-        <p class="restaurant-rating">Rating: {{ restaurant.rating }} ⭐</p>
-        <a [routerLink]="['/restaurant', restaurant.id]" class="details-link"
-          [attr.aria-label]="'View details for ' + restaurant.name">
-          View Details →
-        </a>
-      </div>
+      <a [routerLink]="['/restaurant', restaurant.id]" [attr.aria-label]="'View details for ' + restaurant.name">
+        <img [src]="restaurant.image" alt="{{ restaurant.name }} image" class="restaurant-image" loading="lazy" />
+        <div class="restaurant-info">
+          <h3 class="restaurant-name">{{ restaurant.name }}</h3>
+          <p class="restaurant-cuisine">Cuisine: {{ restaurant.cuisine }}</p>
+          <p class="restaurant-rating" [attr.aria-label]="'Rating:' + restaurant.rating + 'out of 5 stars'">{{ restaurant.rating }} ⭐</p>
+          <span class="details-link" aria-hidden="true">View Details →</span>
+        </div>
       </a>
     </div>
-    
   </div>
 
-  <div *ngIf="loading" class="loading">Loading...</div>
+  <div *ngIf="loading" class="loading" role="status" aria-live="polite" aria-atomic="true">Loading...</div>
 </div>

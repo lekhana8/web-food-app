@@ -35,10 +35,14 @@
   gap: 1.5rem;
   margin-top: 1rem;
   padding-bottom: 2rem;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .restaurant-card {
-    background-color: #fff8f0; 
+  background-color: #fff8f0;
   border-radius: 10px;
   box-shadow: 0 3px 6px rgb(0 0 0 / 0.1);
   overflow: hidden;
@@ -51,6 +55,10 @@
   &:focus-within {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgb(0 0 0 / 0.15);
+  }
+
+  a {
+    text-decoration: none;
   }
 
   .restaurant-image {
@@ -67,14 +75,14 @@
     flex-direction: column;
 
     .restaurant-name {
-      margin: 0 0 0.25rem 0;
+      margin-bottom: 0.25rem;
       font-size: 1.25rem;
       color: #222;
     }
 
     .restaurant-cuisine,
     .restaurant-rating {
-      margin: 0 0 0.5rem 0;
+      margin-bottom: 0.5rem;
       color: #666;
       font-size: 0.9rem;
     }
@@ -83,9 +91,9 @@
       margin-top: auto;
       align-self: flex-start;
       color: #007bff;
-      text-decoration: none;
       font-weight: 600;
       transition: color 0.2s ease;
+      text-decoration: none;
 
       &:hover,
       &:focus {
@@ -102,11 +110,3 @@
   color: #888;
   padding: 2rem 0;
 }
-
-@media (max-width: 480px) {
-  .restaurant-list {
-    grid-template-columns: 1fr;
-  }
-}
-
-

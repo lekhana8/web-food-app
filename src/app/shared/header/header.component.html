@@ -1,14 +1,15 @@
 <div class="header-bar" role="banner" aria-label="Main header">
-  <div class="logo" (click)="goHome()">TastyTrack</div>
+  <div class="logo" (click)="goHome()" tabindex="0" role="link" aria-label="Go to homepage">TastyTrack</div>
+  
   <div class="location-selector" aria-label="Choose location" style="display: flex; align-items: center; gap: 8px;">
     <label for="location-select" class="visually-hidden">Select Location</label>
     <i class="bi bi-geo-alt" aria-hidden="true" style="font-size: 1.2rem; color: #555;"></i>
-
-    <select id="location-select" class="form-select" aria-label="Select location" [(ngModel)]="selectedlocation">
-      <option *ngFor="let location of locations">{{location}}</option>
-
+    
+    <select id="location-select" class="form-select" [(ngModel)]="selectedlocation" aria-required="true">
+      <option *ngFor="let location of locations" [value]="location">{{ location }}</option>
     </select>
   </div>
+  
   <form class="search-form" role="search" aria-label="Site search">
     <div class="input-group">
       <label for="header-search" class="visually-hidden">Search TastyTrack</label>
@@ -24,14 +25,12 @@
   </form>
 
   <nav class="header-icons" aria-label="User account and cart">
-
-
-    <a routerLink="/cart" title="Cart" class="account-link" tabindex="0" role="link" aria-label=" Cart">
+    <a routerLink="/cart" title="Cart" class="account-link" role="link" aria-label="View Cart">
       <i class="bi bi-cart" aria-hidden="true"></i>
       <span>Cart</span>
     </a>
 
-    <a routerLink="/account" title="My Account" class="account-link" tabindex="0" role="link" aria-label="My Account">
+    <a routerLink="/account" title="My Account" class="account-link" role="link" aria-label="View My Account">
       <i class="bi bi-person-circle" aria-hidden="true"></i>
       <span>Account</span>
     </a>

@@ -1,21 +1,26 @@
-<div class="order-confirmation">
-  <h2>Thank you for your order!</h2>
-  <p>Total Amount Paid: ₹{{ total.toFixed(2) }}</p>
+<div class="page-container" role="main" aria-label="Order confirmation page">
 
-  <div class="ordered-items">
-    <h3>Your Ordered Food:</h3>
-    <ul>
-      <li *ngFor="let item of cartItems">
-        <strong>{{ item.name }}</strong> - ₹{{ item.price.toFixed(2) }} x {{ item.quantity }}
-      </li>
-    </ul>
+  <div class="order-confirmation" role="region" aria-labelledby="payment-completed-heading">
+    <h2 id="payment-completed-heading"><strong>Payment Completed</strong></h2>
+
+    <div class="track-meal-card" role="region" aria-labelledby="order-tracking-heading">
+      <h3 id="order-tracking-heading">Your food is on the way! 🎊</h3>
+      <p>Your delicious food is being prepared and will be delivered shortly. Stay tuned!</p>
+      <button routerLink="/track-order" class="track-button" aria-label="Track your meal order">Track Your Meal</button>
+    </div>
+
+    <p aria-live="polite"><strong>Total Amount Paid:</strong> ${{ total.toFixed(2) }}</p>
+
+    <div class="ordered-items" role="region" aria-labelledby="order-details-heading">
+      <h4 id="order-details-heading">Order Details:</h4>
+      <ul>
+        <li *ngFor="let item of cartItems">
+          <strong>{{ item.name }}</strong> – Quantity: {{ item.quantity }}
+        </li>
+      </ul>
+    </div>
+
+    <button routerLink="/" class="home-button" aria-label="Go to home page">Go to Home</button>
   </div>
 
-  <div class="track-meal-card">
-    <h3>Track Your Meal</h3>
-    <p>Your delicious food is being prepared and will be delivered shortly. Stay tuned!</p>
-    <button routerLink="/track-order" class="track-button">Track Your Meal</button>
-  </div>
-
-  <button routerLink="">Go to Home</button>
 </div>

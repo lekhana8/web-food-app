@@ -1,35 +1,37 @@
-<div *ngIf="restaurant" class="restaurant-card  page-container ">
-  <button routerLink="/restaurants" class="back-button">← Back</button>
+<div *ngIf="restaurant" class="restaurant-card page-container" role="region" aria-labelledby="restaurant-name">
+  <button routerLink="/restaurants" class="back-button" aria-label="Go back to restaurants list">← Back</button>
 
-  <h2>{{ restaurant.name }}</h2>
-  <p>Cuisine: {{ restaurant.cuisine }}</p>
-  <p>Rating: {{ restaurant.rating }}</p>
+  <h2 id="restaurant-name">{{ restaurant.name }}</h2>
+  <p><strong>Cuisine:</strong> {{ restaurant.cuisine }}</p>
+  <p><strong>Rating:</strong> {{ restaurant.rating }}</p>
 
-  <h3>Dishes</h3>
+  <h3 id="dishes-heading">Dishes</h3>
 
-  <div *ngFor="let dish of restaurant.dishes" class="dish-card card">
+  <div *ngFor="let dish of restaurant.dishes" class="dish-card card" role="group" 
+       [attr.aria-labelledby]="'dish-name-' + dish.id"
+       [attr.aria-describedby]="'dish-desc-' + dish.id">
     <img [src]="dish.image" alt="{{ dish.name }}" />
     <div class="dish-info">
-      <h4>{{ dish.name }}</h4>
-      <p>{{ dish.description }}</p>
-      <p>Price: ${{ dish.price }}</p>
+      <h4 id="dish-name-{{dish.id}}">{{ dish.name }}</h4>
+      <p id="dish-desc-{{dish.id}}" >{{ dish.description }}</p>
+      <p><strong>Price:</strong> ${{ dish.price }}</p>
 
       <!-- Add to Cart-->
       <div *ngIf="!(cartQuantities[dish.id] > 0)">
-        <button (click)="addToCart(dish)">Add to Cart</button>
+        <button (click)="addToCart(dish)"  [attr.aria-label]="'Add ' + dish.name + ' to cart'" >Add to Cart</button>
       </div>
 
-      <!-- quantity  -->
-      <div *ngIf="cartQuantities[dish.id] > 0" class="cart-actions">
-        <button (click)="decreaseQuantity(dish)">−</button>
-        <span>{{ cartQuantities[dish.id] }}</span>
-        <button (click)="addToCart(dish)">+</button>
+      <!-- quantity managing  -->
+      <div *ngIf="cartQuantities[dish.id] > 0" class="cart-actions" role="group" [attr.aria-label]="'Quantity controls for ' + dish.name">
+        <button (click)="decreaseQuantity(dish)" [attr.aria-label]="'Decrease quantity of ' + dish.name">−</button>
+        <span aria-live="polite" aria-atomic="true">{{ cartQuantities[dish.id] }}</span>
+        <button (click)="addToCart(dish) "  [attr.aria-label]="'Increase quantity of ' + dish.name" >+</button>
       </div>
     </div>
+
     <!-- Floating Cart  -->
     <button class="floating-cart-icon" (click)="goToCart()" aria-label="View Cart">
       🛒
     </button>
-
   </div>
 </div>

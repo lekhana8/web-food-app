@@ -21,14 +21,12 @@ export class OrderConfirmationComponent implements OnInit {
     this.cartItems = this.cartService.getCartItems();
 
     if (this.cartItems.length === 0) {
-      // Redirect if no items in cart
       this.router.navigate(['/']);
       return;
     }
 
     this.total = this.cartService.getTotal();
 
-    // Clear cart after order confirmation
     this.cartService.clearCart();
   }
 }

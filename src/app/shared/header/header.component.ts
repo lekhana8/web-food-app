@@ -12,8 +12,8 @@ import { Router, RouterLink } from '@angular/router';
 })
 
 export class HeaderComponent {
-  locations=['us','uk','india','laos'];
-  selectedlocation = 'india';
+  locations=['Bellandur','Maratahalli','BTMLayout','Koramangala'];
+  selectedlocation = 'Maratahalli';
   constructor(private router: Router) {}
   
  goHome() {

@@ -1,38 +1,97 @@
-<div class="cart-container page-container">
-  <button (click)="goBack()" class="back-button">← Back</button>
+<div class="cart-container page-container" role="main" aria-label="Shopping Cart Page">
+  <button (click)="goBack()" class="back-button" aria-label="Go back to previous page">← Back</button>
 
   <h2>Your Cart</h2>
 
-  <div *ngIf="cartItems.length === 0">
+  <div *ngIf="cartItems.length === 0" role="alert">
     <p>Your cart is empty.</p>
   </div>
 
-  <div *ngFor="let item of cartItems" class="cart-item">
+  <div *ngFor="let item of cartItems" class="cart-item" role="group" [attr.aria-label]="'Cart item: ' + item.name">
     <div class="item-info">
       <h3>{{ item.name }}</h3>
+      <p>Price: ${{ item.price }}</p>
 
-      <div class="quantity-controls">
-        <button (click)="decreaseQuantity(item)">−</button>
-        <span>{{ item.quantity }}</span>
-        <button (click)="increaseQuantity(item)">+</button>
+      <div class="quantity-controls" role="group" [attr.aria-label]="'Quantity controls for' + item.name">
+        <button (click)="decreaseQuantity(item)" [attr.aria-label]="'Decrease quantity of' + item.name">−</button>
+        <span aria-live="polite" aria-atomic="true">{{ item.quantity }}</span>
+        <button (click)="increaseQuantity(item)" [attr.aria-label]="'Increase quantity of' + item.name ">+</button>
       </div>
 
-      <button (click)="removeItem(item.id)" class="remove-btn">Remove</button>
+      <button (click)="removeItem(item.id)" class="remove-btn" [attr.aria-label]="'Remove' + item.name + 'from cart'">Remove</button>
     </div>
 
-    <img [src]="item.image" alt="{{ item.name }}" />
+    <img [src]="item.image" [alt]="item.name" />
   </div>
 
- 
-    <div *ngIf="cartItems.length > 0" class="cart-summary">
-  <p><strong>Subtotal: ₹{{ subtotal.toFixed(2) }}</strong></p>
-  <p><strong>Tax (10%): ₹{{ taxAmount.toFixed(2) }}</strong></p>
-  <p><strong>Total: ₹{{ total.toFixed(2) }}</strong></p>
-  
-  <div class="summary-buttons">
-    <button (click)="clearCart()" class="clear-btn">Clear Cart</button>
-    <button routerLink="/orderconfirmation" [disabled]="cartItems.length === 0" class="place-order-btn">Place Order</button>
+  <div *ngIf="cartItems.length > 0" class="cart-summary" role="region" aria-label="Cart summary">
+    <p><strong>Total: ${{ total.toFixed(2) }}</strong></p>
+    <div class="summary-buttons">
+
+      <div *ngIf="isLoggedIn">
+        <label for="payment" class="visually-hidden">Payment Method</label>
+        <select id="payment"
+                [(ngModel)]="selectedPaymentMethod"
+                [disabled]="paymentMethods.length === 0"
+                class="payment-select"
+                aria-required="true"
+                [attr.aria-label]="'Payment Method'">
+          <option value="" disabled>Select a payment method</option>
+          <option *ngFor="let method of paymentMethods" [value]="method">{{ method }}</option>
+        </select>
+      </div>
+
+      <button *ngIf="!showLoginForm && !isLoggedIn"
+              (click)="toggleLoginForm()"
+              class="place-order-btn"
+              aria-label="Log in to place your order">
+        Log In to Place Order
+      </button>
+
+      <button *ngIf="isLoggedIn"
+              [routerLink]="selectedPaymentMethod ? '/orderconfirmation' : null"
+              class="place-order-btn"
+              [disabled]="!selectedPaymentMethod"
+              [attr.aria-disabled]="!selectedPaymentMethod"
+              aria-label="Place order">
+        Place Order
+      </button>
+
+    </div>
+  </div>
+
+  <!-- checkout form -->
+  <div *ngIf="showLoginForm" class="login-form" role="form" aria-label="Login form">
+    <h2>Enter your details to place the order</h2>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" aria-describedby="login-instructions">
+      <p id="login-instructions" class="visually-hidden">All fields are required</p>
+
+      <div>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" formControlName="name" required aria-required="true" />
+        <div *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched" class="error" role="alert">
+          Name is required (min 3 characters).
+        </div>
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" required aria-required="true" />
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error" role="alert">
+          Valid email is required.
+        </div>
+      </div>
+
+      <div>
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" formControlName="phone" required aria-required="true" />
+        <div *ngIf="loginForm.get('phone')?.invalid && loginForm.get('phone')?.touched" class="error" role="alert">
+          Valid phone number is required.
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid" class="sign-up-btn" aria-label="Sign up and submit order details">Sign Up</button>
+    </form>
   </div>
 </div>
-
-  </div>

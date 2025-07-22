@@ -1,15 +1,11 @@
 .card {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-      background-color: #fff8f0; 
-
-  
+  background-color: #fff8f0;
 }
-
-
 
 h2 {
   font-size: 2rem;
@@ -33,16 +29,15 @@ h3 {
 
 .dish-card {
   display: flex;
-  flex-direction: row-reverse; 
+  flex-direction: row-reverse;
   gap: 1rem;
   align-items: flex-start;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1rem;
-    background-color: #fff8f0; 
+  background-color: #fff8f0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-
 
   img {
     width: 120px;
@@ -83,6 +78,7 @@ h3 {
     }
   }
 }
+
 .floating-cart-icon {
   position: fixed;
   bottom: 24px;
@@ -106,6 +102,3 @@ h3 {
     background-color: #025aa5;
   }
 }
-
-
-

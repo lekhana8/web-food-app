@@ -10,12 +10,12 @@ import { OrderConfirmationComponent } from './restaurants/order-confirmation/ord
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent, // 👈 Set HomeComponent as the landing page
+    component: HomeComponent, 
     pathMatch: 'full'
   },
   {
     path: 'home',
-    component: HomeComponent // 👈 Optional: accessible via /home too
+    component: HomeComponent 
   },
   
   {
